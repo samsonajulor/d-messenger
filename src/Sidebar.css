@@ -7,6 +7,8 @@
 
 .sidebar{
  flex: 0.35;
+ display: flex;
+ flex-direction: column;
 }
 
 .sidebar__headerRight{
@@ -19,4 +21,30 @@
 .sidebar__headerRight>.MuiSVGIcon-root{
 margin-right: 2vw;
 font-size: 24px !important;
+}
+.sidebar__search{
+ display: flex;
+ align-items: center;
+ height: 39px;
+ padding: 10px;
+}
+
+.sidebar__searchContainer{
+ display: flex;
+ background-color: white;
+ width: 100%;
+ height: 35px;
+ border-radius: 20px;
+}
+.sidebar__searchContainer > input{
+border: none;
+margin-left: 10px ;
+}
+.sidebar__searchContainer > .MuuiSvgIcon-root{
+color-adjust: gray;
+padding: 10px;
+}
+
+.sidebar___chats {
+ flex-direction: 1;
 }
