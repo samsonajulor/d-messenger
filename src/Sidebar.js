@@ -5,24 +5,34 @@ import ChatIcon from '@material-ui/icons/Chat'
 import MoreVertIcon from '@material-ui/icons/MoreVert'
 import SearchOutlined from '@material-ui/icons/SearchOutlined'
 import SidebarChat from './SidebarChat'
-import db from './Firebase'
-
+// import db from './Firebase'
+import firebase from './Firebase'
 import './Sidebar.css'
+
+
+const db = firebase.firestore()
+
+
 
 function Sidebar() {
   const [rooms, setRooms] = useState([])
 
-  useEffect(()=>{
-    db.collection('groups').onSnapshot((snapshot)=>
-      setRooms(snapshot.docs.map(doc=>
-        ({
-          id: doc.id,
-          data: doc.data(),
-        })
-        ))
-    )
-      
-  }, [])
+    useEffect(() => {
+    const unsubscribe =  db.collection('groups').onSnapshot((snapshot) => {
+        setRooms(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            data: doc.data(),
+          }))
+        )
+      })
+
+      return () => {
+        unsubscribe() //optimisation or clean up when the component unmounts which detaches the user when the user logs out.
+      }
+    }, [])
+
+
   return (
     <div className='sidebar'>
       <div className='sidebar__header'>

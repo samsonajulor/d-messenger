@@ -5,6 +5,7 @@ import AttachFile from '@material-ui/icons/AttachFile'
 import MoreVert from '@material-ui/icons/MoreVert'
 import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon'
 import MicIcon from '@material-ui/icons/Mic'
+import {useParams} from 'react-router-dom'
 
 import './Chat.css'
 
@@ -13,6 +14,7 @@ function Chat() {
 
   const [input, setInput] = useState('')
  const [seed, setSeed] = useState('')
+ const {groupId} = useParams()
 
   const sendMessage = (e) => {
     e.preventDefault()
