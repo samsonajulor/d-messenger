@@ -1,27 +1,22 @@
 import React from 'react';
-import { Info, Repos, User, Search, Navbar } from '../components';
-import loadingImage from '../images/preloader.gif';
-import { GithubContext } from '../context/context';
+import { LoggedInUserContext } from './context/login/context';
+import Navbar from './Navbar'
+import Sidebar from './Sidebar'
+import Chat from './Chat'
+
+import './Dashboard.css'
+
 const Dashboard = () => {
-  const { isLoading } = React.useContext(GithubContext);
-  if (isLoading) {
-    return (
-      <main>
-        <Navbar />
-        <Search />
-        <img src={loadingImage} className='loading-img' alt='loding' />
-      </main>
-    );
-  }
+
   return (
-    <main>
-      <Navbar></Navbar>
-      <Search />
-      <Info />
-      <User />
-      <Repos />
-    </main>
-  );
+    <div className='dashboard'>
+        <Navbar></Navbar>
+      <div className='dashboard__body'>
+        <Sidebar />
+        <Chat />
+      </div>
+    </div>
+  )
 };
 
 export default Dashboard;

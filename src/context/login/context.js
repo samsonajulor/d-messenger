@@ -3,13 +3,13 @@ import axios from 'axios';
 
 const rootUrl = 'https://api.github.com'
 
-const loggedInUserContext = React.createContext()
+const LoggedInUserContext = React.createContext()
 
-const loggedInUserProvider = ({children}) => {
- return <loggedInUserContext.Provider value={'hello'}>{children}</loggedInUserContext.Provider>
+const LoggedInUserProvider = ({children}) => {
+ return <LoggedInUserContext.Provider value={'hello'}>{children}</LoggedInUserContext.Provider>
 }
 
-export {loggedInUserContext, loggedInUserProvider}
+export {LoggedInUserContext, LoggedInUserProvider}
 
 
 
