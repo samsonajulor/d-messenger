@@ -14,6 +14,10 @@ background-color: rgb(169, 206, 169);
 .sidebarChat__info{
 margin-left: 15px;
 }
+a{
+ text-decoration: none;
+ color: black;
+}
 
 
 
