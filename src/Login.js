@@ -36,11 +36,12 @@ const Wrapper = styled.section`
     /* width: 90vw; */
     /* max-width: 600px; */
     text-align: center;
+    margin-top: 90px;
   }
   img {
     margin-bottom: 2rem;
-    width: 200px;
-    height: 200px
+    width: 50vw;
+    height: 50vh;
   }
   h1 {
     margin-bottom: 1.5rem;

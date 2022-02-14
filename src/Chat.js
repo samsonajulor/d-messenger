@@ -58,7 +58,9 @@ function Chat() {
           <Avatar src={avatarImage} />
           <div className='chat__headerInfo'>
             <h3>{groupName}</h3>
-            <p>Last seen at ...</p>
+            <p>Last seen{' '}
+            {new Date(messages[messages.length-1]?.timestamp?.toDate()).toUTCString()}
+            </p>
           </div>
 
           <div className='chat__headerRight'>
@@ -75,24 +77,12 @@ function Chat() {
         </div>
         <div className='chat__body'>
           {messages.map((message) => (
-            <p className={`chat__message ${true && 'chat__sender'}`}>
+            <p className={`chat__message ${message.name===user.name && 'chat__sender'}`}>
               <span className='chat__name'>{message.name}</span>
               {message.message}
               <span className='chat__timestamp'>{new Date(message.timestamp?.toDate()).toUTCString()}</span>
             </p>
           ))}
-          <p className='chat__message'>
-            <span className='chat__name'>Samson Ajulor</span>
-            this is a message
-            <span className='chat__timestamp'>3:52pm</span>
-          </p>
-          <p className={`chat__message ${true && 'chat__sender'}`}>
-            <span className='chat__name'>Samson Ajulor</span>
-            this is a message sent by moi I want to make this as long as
-            possible do not be afraid to break that is why we do not send very
-            long messages sef because we are the best music
-            <span className='chat__timestamp'>3:52pm</span>
-          </p>
         </div>
         <div className='chat__footer'>
           <InsertEmoticonIcon />
