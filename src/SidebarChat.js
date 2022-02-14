@@ -4,7 +4,6 @@ import firebase from './Firebase'
 import './SidebarChat.css'
 import { Link } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
-// import firebase from './Firebase'
 const db = firebase.firestore()
 
 function SidebarChat({ id, name, addNewChat }) {
