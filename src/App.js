@@ -17,26 +17,35 @@ function App() {
 
   return (
     <div className='app'>
-      {/* <div className='app__body'> */}
-        <Router>
-          <Routes>
-            <Route
-              path='/groups/:groupId'
-              element={
-                <>
-                  <Sidebar />
-                  <Chat />
-                </>
-              }
-            />{' '}
-            <Route path='/' exact={true} element={<Login />} />{' '}
-            <Route path='/login' exact={true} element={<Login />} />{' '}
-            <Route path='*' element={<Error />} />{' '}
-            {/* <Route path='/login' element={<Navigate replace to='/login' />} /> */}{' '}
-          </Routes>
-        </Router>
-      </div>
-    // </div>
+      <div className='app__body'>
+      <Router>
+        <Routes>
+          <Route
+            path='/groups/:groupId'
+            element={
+              <>
+                <Sidebar />
+                <Chat />
+              </>
+            }
+          />{' '}
+          <Route
+            path='/'
+            exact={true}
+            element={
+              <>
+                <Sidebar />
+                <Chat />
+              </>
+            }
+          />{' '}
+          <Route path='/login' exact={true} element={<Login />} />{' '}
+          <Route path='*' element={<Error />} />{' '}
+          {/* <Route path='/login' element={<Navigate replace to='/login' />} /> */}{' '}
+        </Routes>
+      </Router>
+    </div>
+    </div>
   )
 }
 

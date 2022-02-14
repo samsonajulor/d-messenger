@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import {loggedInUserContext, loggedInUserProvider} from './context/login/context'
+import {Auth0Provider} from '@auth0/auth0-react'
 
 
 //samsonajulor.us.auth0.com
@@ -15,10 +16,11 @@ ReactDOM.render(
       domain='samsonajulor.us.auth0.com'
       clientId='WpD4LaJfJkmlO7EDQb3dwQ2a9oTyTAYy'
       redirectUri={window.location.origin}
-    ></Auth0Provider>
-    <loggedInUserContext>
-      <App />
-    </loggedInUserContext>
+    >
+      <loggedInUserContext>
+        <App />
+      </loggedInUserContext>
+    </Auth0Provider>
   </React.StrictMode>,
   document.getElementById('root')
 )

@@ -5,27 +5,32 @@ import loginImg from './images/login-img.svg'
 
 import './Login.css'
 const Login = () => {
+  const { loginWithRedirect, logout, isAuthenticated, user, isLoading } = useAuth0()
   return (
     <Wrapper>
-      <div className="login__container">
- <img src={loginImg} alt="d-messenger" />
- <h1>D-Messenger</h1>
- <button className="login__btn">login</button>
+      <div className='login__container'>
+        <img src={loginImg} alt='d-messenger' />
+        <h1>D-Messenger</h1>
+        <button onClick={() => loginWithRedirect()} className='login__btn'>
+          login/signup
+        </button>
       </div>
     </Wrapper>
   )
 }
 const Wrapper = styled.section`
-  min-height: 100vh;
+  /* min-height: 100vh; */
   display: grid;
   place-items: center;
-  .container {
-    width: 90vw;
-    max-width: 600px;
+  .login__container {
+    /* width: 90vw; */
+    /* max-width: 600px; */
     text-align: center;
   }
   img {
     margin-bottom: 2rem;
+    width: 200px;
+    height: 200px
   }
   h1 {
     margin-bottom: 1.5rem;
