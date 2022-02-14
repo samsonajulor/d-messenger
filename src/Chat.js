@@ -7,6 +7,8 @@ import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon'
 import MicIcon from '@material-ui/icons/Mic'
 import { useParams } from 'react-router-dom'
 import firebase from './Firebase'
+import { useAuth0 } from '@auth0/auth0-react'
+// import firebase from 'firebase'
 import './Chat.css'
 
 const db = firebase.firestore()
@@ -16,18 +18,32 @@ function Chat() {
   const [seed, setSeed] = useState('')
   const { groupId } = useParams()
   const [groupName, setGroupName] = useState('')
+  const [messages,setMessages] = useState([])
+    const { isAuthenticated, user } = useAuth0()
+    const isUser = isAuthenticated && user
+    console.log(user, 'this is the user from chat')
 
   useEffect(() => {
     if (groupId) {
       db.collection('groups')
         .doc(groupId)
         .onSnapshot((snapshot) => (setGroupName(snapshot.data().name)))
+
+        db.collection('groups').doc(groupId).collection('messages').orderBy('timestamp', 'asc').onSnapshot(snapshot=>(
+          setMessages(snapshot.docs.map(doc => doc.data()))
+        ))
     }
   }, [groupId])
 
   const sendMessage = (e) => {
     e.preventDefault()
-    // setInput('')
+
+    db.collection('groups').doc(groupId).collection('messages').add({
+      message: input,
+      name: user.name,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    })
+    setInput('')
   }
 
   useEffect(() => {
@@ -58,6 +74,13 @@ function Chat() {
           </div>
         </div>
         <div className='chat__body'>
+          {messages.map((message) => (
+            <p className={`chat__message ${true && 'chat__sender'}`}>
+              <span className='chat__name'>{message.name}</span>
+              {message.message}
+              <span className='chat__timestamp'>{new Date(message.timestamp?.toDate()).toUTCString()}</span>
+            </p>
+          ))}
           <p className='chat__message'>
             <span className='chat__name'>Samson Ajulor</span>
             this is a message
