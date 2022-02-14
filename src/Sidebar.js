@@ -7,6 +7,7 @@ import SearchOutlined from '@material-ui/icons/SearchOutlined'
 import SidebarChat from './SidebarChat'
 // import db from './Firebase'
 import firebase from './Firebase'
+import { useAuth0 } from '@auth0/auth0-react';
 import './Sidebar.css'
 
 
@@ -15,6 +16,10 @@ const db = firebase.firestore()
 
 
 function Sidebar() {
+  const { isAuthenticated, user } = useAuth0()
+  const isUser = isAuthenticated && user
+  console.log(user, 'this is the user from sidechat')
+
   const [rooms, setRooms] = useState([])
 
     useEffect(() => {
@@ -36,9 +41,15 @@ function Sidebar() {
   return (
     <div className='sidebar'>
       <div className='sidebar__header'>
-        <IconButton>
-          <Avatar />
+        {isUser && user.picture ? (
+          <IconButton>
+          <Avatar src={user.picture}/>
         </IconButton>
+        ): (
+          <IconButton>
+          <Avatar/>
+        </IconButton>
+        )}
         <div className='sidebar__headerRight'>
           <IconButton>
             <DonutLargeIcon />
@@ -59,12 +70,10 @@ function Sidebar() {
         </div>
       </div>
       <div className='sidebar__chats'>
-       <SidebarChat addNewChat/>
-       {rooms.map(room=>
-       (
-         <SidebarChat key={room.id} id={room.id} name={room.data.name}/>
-       )
-        )}
+        <SidebarChat addNewChat />
+        {rooms.map((room) => (
+          <SidebarChat key={room.id} id={room.id} name={room.data.name} />
+        ))}
       </div>
     </div>
   )
