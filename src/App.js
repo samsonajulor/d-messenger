@@ -26,26 +26,9 @@ function App() {
               </PrivateRoute>
             }
           />
-          {/* <Route exact path='/groups/:groupId'>
-            {isUser ? <Navigate to='/dashboard' /> : <Login />}
-          </Route> */}
-          {/* <Route
-          path='/'
-          exact={true}
-          element={
-            <PrivateRoute>
-              <Dashboard />
-            </PrivateRoute>
-          }
-        />{' '} */}
-          {/* <Route exact path='/' element={<PrivateRoute />}>
-            <Route exact path='/' element={<Dashboard />} />
-          </Route> */}
           <Route exact path='/' element={<Dashboard />} />
           <Route path='/login' exact={true} element={<Login />} />
           <Route path='*' element={<Error />} />
-          {/* <PrivateRoute exact path='/dashboard' element={<Dashboard/>} /> */}
-          {/* <Route path='/login' element={<Navigate replace to='/login' />} /> */}
         </Routes>
       </Fragment>
     </Router>

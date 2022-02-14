@@ -5,7 +5,6 @@ import ChatIcon from '@material-ui/icons/Chat'
 import MoreVertIcon from '@material-ui/icons/MoreVert'
 import SearchOutlined from '@material-ui/icons/SearchOutlined'
 import SidebarChat from './SidebarChat'
-// import db from './Firebase'
 import firebase from './Firebase'
 import { useAuth0 } from '@auth0/auth0-react';
 import './Sidebar.css'
@@ -18,7 +17,6 @@ const db = firebase.firestore()
 function Sidebar() {
   const { isAuthenticated, user } = useAuth0()
   const isUser = isAuthenticated && user
-  console.log(user, 'this is the user from sidechat')
 
   const [rooms, setRooms] = useState([])
 
