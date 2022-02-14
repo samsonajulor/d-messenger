@@ -27,7 +27,7 @@ function Chat() {
 
   const sendMessage = (e) => {
     e.preventDefault()
-    setInput('')
+    // setInput('')
   }
 
   useEffect(() => {

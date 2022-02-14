@@ -2,10 +2,20 @@ import React from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import styled from 'styled-components'
 import loginImg from './images/login-img.svg'
+// import {actionTypes} from './reducer'
+// import {useStateValue} from './StateProvider'
 
 import './Login.css'
+
 const Login = () => {
+  // const [{}, dispatch] = useStateValue()
   const { loginWithRedirect, logout, isAuthenticated, user, isLoading } = useAuth0()
+
+  // dispatch({
+  //   type: actionTypes.SET_USER,
+  //   user
+  // })
+
   return (
     <Wrapper>
       <div className='login__container'>

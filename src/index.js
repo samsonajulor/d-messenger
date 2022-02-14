@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 // import {LoggedInUserContext, LoggedInUserProvider} from './context/login/context'
 import {Auth0Provider} from '@auth0/auth0-react'
+import reducer, {initialState} from './reducer'
+import {StateProvider} from './StateProvider'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -13,7 +15,9 @@ ReactDOM.render(
       redirectUri={window.location.origin}
     >
       {/* <LoggedInUserContext> */}
+      {/* <StateProvider initialState={initialState} reducer={reducer}> */}
         <App />
+      {/* </StateProvider> */}
       {/* </LoggedInUserContext> */}
     </Auth0Provider>
   </React.StrictMode>,
